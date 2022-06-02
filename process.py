@@ -35,20 +35,7 @@ class Nodule_classifier:
         self.input_spacing = 0.2
 
         # load malignancy model
-        self.model_malignancy = VGG16(
-            include_top=True,
-            weights=None,
-            input_tensor=None,
-            input_shape=None,
-            pooling=None,
-            classes=2,
-            classifier_activation="softmax",
-        )
-        self.model_malignancy.load_weights(
-            "/opt/algorithm/models/vgg16_malignancy_best_val_accuracy.h5",
-            by_name=True,
-            skip_mismatch=True,
-        )
+        self.model_malignancy = keras.models.load_model('3dcnn_naug_dropout_malignancy_best_val_accuracy.h5')
 
         # load texture model
         self.model_nodule_type = VGG16(
