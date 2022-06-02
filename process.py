@@ -5,6 +5,7 @@ import numpy as np
 from pathlib import Path
 import json
 
+from tensorflow import keras
 import tensorflow.keras
 from tensorflow.keras.applications import VGG16
 
