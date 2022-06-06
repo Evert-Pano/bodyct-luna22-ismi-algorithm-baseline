@@ -32,11 +32,11 @@ def clip_and_scale(
 class Nodule_classifier:
     def __init__(self):
 
-        self.input_size = 224
-        self.input_spacing = 0.2
+        self.input_size = 64
+        self.input_spacing = 1
 
         # load malignancy model
-        self.model_malignancy = keras.models.load_model("/opt/algorithm/models/3dcnn_upgrade_malignancy_best_val_accuracy.h5")
+        self.model_malignancy = keras.models.load_model("/opt/algorithm/models/3dcnn_drop_inc_layers_malignancy_best_val_accuracy.h5")
 
         # load texture model
         self.model_nodule_type = VGG16(
