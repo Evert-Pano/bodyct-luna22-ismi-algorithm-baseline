@@ -36,7 +36,7 @@ class Nodule_classifier:
         self.input_spacing = 1
 
         # load malignancy model
-        self.model_malignancy = keras.models.load_model("/opt/algorithm/models/3dcnn_drop_inc_layers_malignancy_best_val_accuracy.h5")
+        self.model_malignancy = keras.models.load_model("/opt/algorithm/models/3dcnn_malignancy_best_val_accuracy.h5")
 
         # load texture model
         self.model_nodule_type = VGG16(
