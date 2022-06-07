@@ -40,7 +40,7 @@ class Nodule_classifier:
         self.model_malignancy = keras.models.load_model("/opt/algorithm/models/3dcnn_malignancy_best_val_accuracy.h5")
 
         # load texture model
-        self.model_malignancy = keras.models.load_model("/opt/algorithm/models/3dcnn_noduletype_best_val_accuracy.h5")
+        self.model_nodule_type = keras.models.load_model("/opt/algorithm/models/3dcnn_noduletype_best_val_accuracy.h5")
 
 
         print("Models initialized")
@@ -107,7 +107,7 @@ class Nodule_classifier:
         )
 
         # Extract the axial/coronal/sagittal center slices of the 50 mm^3 cube
-        nodule_data = get_cross_slices_from_cube(volume=nodule_data)
+        # nodule_data = get_cross_slices_from_cube(volume=nodule_data)
         nodule_data = clip_and_scale(nodule_data)
 
         malignancy = self.model_malignancy(nodule_data[None]).numpy()[0, 1]
