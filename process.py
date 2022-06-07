@@ -1,4 +1,5 @@
 from typing import Dict
+import sys
 
 import SimpleITK
 import numpy as np
@@ -39,20 +40,8 @@ class Nodule_classifier:
         self.model_malignancy = keras.models.load_model("/opt/algorithm/models/3dcnn_malignancy_best_val_accuracy.h5")
 
         # load texture model
-        self.model_nodule_type = VGG16(
-            include_top=True,
-            weights=None,
-            input_tensor=None,
-            input_shape=None,
-            pooling=None,
-            classes=3,
-            classifier_activation="softmax",
-        )
-        self.model_nodule_type.load_weights(
-            "/opt/algorithm/models/vgg16_noduletype_best_val_accuracy.h5",
-            by_name=True,
-            skip_mismatch=True,
-        )
+        self.model_malignancy = keras.models.load_model("/opt/algorithm/models/3dcnn_noduletype_best_val_accuracy.h5")
+
 
         print("Models initialized")
 
@@ -96,6 +85,8 @@ class Nodule_classifier:
         return SimpleITK.GetArrayFromImage(resampled_img)
 
     def predict(self, input_image: SimpleITK.Image) -> Dict:
+
+        print(f"Processing image of size: {input_image.GetSize()}", file=sys.stderr)
 
         print(f"Processing image of size: {input_image.GetSize()}")
 
