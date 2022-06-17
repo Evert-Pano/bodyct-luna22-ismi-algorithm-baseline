@@ -40,7 +40,7 @@ class Nodule_classifier:
         self.model_malignancy = keras.models.load_model("/opt/algorithm/models/3dcnn_malignancy_best_val_accuracy_DropoutDense.h5")
 
         # load texture model
-        self.model_nodule_type = keras.models.load_model("/opt/algorithm/models3dcnn_v10.4_noduletype_best_val_accuracy.h5")
+        self.model_nodule_type = keras.models.load_model("/opt/algorithm/models/3dcnn_v10.4_noduletype_best_val_accuracy.h5")
 
 
         print("Models initialized")
